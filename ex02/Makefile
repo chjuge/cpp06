@@ -6,23 +6,26 @@
 #    By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/06 14:25:39 by mproveme          #+#    #+#              #
-#    Updated: 2022/11/06 14:51:46 by mproveme         ###   ########.fr        #
+#    Updated: 2022/11/06 20:32:59 by mproveme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	main.cpp\
-			Conversion.cpp
+			Base.cpp
 
 OBJS	= 	$(SRCS:.cpp=.o)
 
-HEAD	=	Conversion.hpp
+HEAD	=	A.hpp\
+			B.hpp\
+			C.hpp\
+			Base.hpp
 			
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 RM		=	rm -rf
 
-NAME	=	convert
+NAME	=	identify
 
 all:		$(NAME)
 
@@ -40,4 +43,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re 
+.PHONY:		all clean fclean re

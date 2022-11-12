@@ -5,22 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 14:46:26 by mproveme          #+#    #+#             */
-/*   Updated: 2022/11/06 20:05:26 by mproveme         ###   ########.fr       */
+/*   Created: 2022/11/06 20:17:47 by mproveme          #+#    #+#             */
+/*   Updated: 2022/11/06 20:25:11 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Conversion.hpp"
+#include "header.hpp"
 
-int	main(int argc, char *argv[])
+uintptr_t	serialize(Data *ptr)
 {
-	if (argc != 2) {
-		std::cout << "Wrong number of arguments" << std::endl;
-		return (1);
-	}
+	return reinterpret_cast<uintptr_t>(ptr);
+}
 
-	Conversion conv = Conversion(argv[1]);
-	if (conv.getType() != ERROR)
-		conv.printConversionResult();
-	return (0);
+Data	*deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data *>(raw);
+}
+
+int	main( void )
+{
+	Data *ptr = new Data;
+	Data *new_ptr;
+	uintptr_t raw;
+
+	ptr->data = "Fish, meat and kozli na sostavleniyah etogo basika";
+	ptr->data_int = 777;
+	raw = serialize(ptr);
+	new_ptr = deserialize(raw);
+	std::cout << "new_ptr->data = " << new_ptr->data << std::endl;
+	std::cout << "and more:		" << new_ptr->data_int << std::endl;
+	delete ptr;
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 14:46:26 by mproveme          #+#    #+#             */
-/*   Updated: 2022/11/06 20:05:26 by mproveme         ###   ########.fr       */
+/*   Created: 2022/11/06 20:18:06 by mproveme          #+#    #+#             */
+/*   Updated: 2022/11/06 20:21:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Conversion.hpp"
+#ifndef HEADER_HPP
+# define HEADER_HPP
 
-int	main(int argc, char *argv[])
+# include <iostream>
+
+typedef struct	s_Data
 {
-	if (argc != 2) {
-		std::cout << "Wrong number of arguments" << std::endl;
-		return (1);
-	}
+	std::string data;
+	int			data_int;
+}	Data;
 
-	Conversion conv = Conversion(argv[1]);
-	if (conv.getType() != ERROR)
-		conv.printConversionResult();
-	return (0);
-}
+#endif
